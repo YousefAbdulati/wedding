@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f9f3f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Montserrat', sans-serif;
+            background-image: radial-gradient(#e8d7d0 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        
+        .invitation-card {
+            width: 650px;
+            height: 900px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            position: relative;
+            overflow: hidden;
+            padding: 50px;
+            box-sizing: border-box;
+            text-align: center;
+            border: 1px solid #e8d7d0;
+        }
+        
+        .invitation-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 12px;
+            background: linear-gradient(90deg, #e8b4bc, #d282a6, #a49393);
+        }
+        
+        .shape-decoration {
+            position: absolute;
+            opacity: 0.08;
+            z-index: 0;
+        }
+        
+        .circle-large {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 40px solid #d282a6;
+            top: -150px;
+            right: -150px;
+        }
+        
+        .circle-medium {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 25px solid #e8b4bc;
+            bottom: -90px;
+            left: -90px;
+        }
+        
+        .diamond {
+            width: 120px;
+            height: 120px;
+            transform: rotate(45deg);
+            background-color: #a49393;
+            top: 50%;
+            left: -60px;
+        }
+        
+        .triangle {
+            width: 0;
+            height: 0;
+            border-left: 80px solid transparent;
+            border-right: 80px solid transparent;
+            border-bottom: 140px solid #e8d7d0;
+            bottom: 20px;
+            right: -40px;
+            transform: rotate(15deg);
+        }
+        
+        .header {
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        h1 {
+            font-family: 'Alex Brush', cursive;
+            font-size: 4rem;
+            color: #d282a6;
+            margin: 20px 0 10px;
+            font-weight: normal;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: #a49393;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+        
+        .names {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: #333;
+            line-height: 1.3;
+            margin: 40px 0;
+            position: relative;
+            z-index: 1;
+            font-weight: 600;
+        }
+        
+        .and {
+            font-family: 'Alex Brush', cursive;
+            font-size: 2.5rem;
+            color: #d282a6;
+            margin: 10px 0;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .and::before, .and::after {
+            content: '✽';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #e8b4bc;
+            font-size: 1.2rem;
+        }
+        
+        .and::before {
+            left: -40px;
+        }
+        
+        .and::after {
+            right: -40px;
+        }
+        
+        .details {
+            margin: 50px 0;
+            line-height: 1.8;
+            color: #555;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .date, .venue {
+            font-size: 1.3rem;
+            margin: 20px 0;
+            font-family: 'Playfair Display', serif;
+            color: #333;
+        }
+        
+        .rsvp {
+            margin-top: 60px;
+            font-style: italic;
+            color: #a49393;
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+            border-top: 1px dashed #e8d7d0;
+            border-bottom: 1px dashed #e8d7d0;
+        }
+        
+        .floral {
+            position: absolute;
+            z-index: 0;
+            color: #d282a6;
+            opacity: 0.15;
+            font-size: 2rem;
+        }
+        
+        .floral-1 {
+            top: 100px;
+            left: 80px;
+            transform: rotate(-25deg);
+        }
+        
+        .floral-2 {
+            bottom: 120px;
+            right: 90px;
+            transform: rotate(15deg);
+        }
+        
+        .floral-3 {
+            top: 40%;
+            right: 70px;
+            transform: rotate(10deg);
+        }
+        
+        .floral-4 {
+            bottom: 30%;
+            left: 80px;
+            transform: rotate(-10deg);
+        }
+        
+        .separator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 40px 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .separator .line {
+            height: 1px;
+            width: 100px;
+            background-color: #e8d7d0;
+        }
+        
+        .separator .diamond-shape {
+            width: 10px;
+            height: 10px;
+            transform: rotate(45deg);
+            background-color: #d282a6;
+            margin: 0 20px;
+        }
+        
+        .corner-shape {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-color: #e8d7d0;
+            border-style: solid;
+            border-width: 0;
+        }
+        
+        .top-left {
+            top: 30px;
+            left: 30px;
+            border-right-width: 1px;
+            border-bottom-width: 1px;
+        }
+        
+        .top-right {
+            top: 30px;
+            right: 30px;
+            border-left-width: 1px;
+            border-bottom-width: 1px;
+        }
+        
+        .bottom-left {
+            bottom: 30px;
+            left: 30px;
+            border-right-width: 1px;
+            border-top-width: 1px;
+        }
+        
+        .bottom-right {
+            bottom: 30px;
+            right: 30px;
+            border-left-width: 1px;
+            border-top-width: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="invitation-card">
+        <!-- Background shapes -->
+        <div class="shape-decoration circle-large"></div>
+        <div class="shape-decoration circle-medium"></div>
+        <div class="shape-decoration diamond"></div>
+        <div class="shape-decoration triangle"></div>
+        
+        <!-- Floral decorations -->
+        <div class="floral floral-1">✿</div>
+        <div class="floral floral-2">✿</div>
+        <div class="floral floral-3">✿</div>
+        <div class="floral floral-4">✿</div>
+        
+        <!-- Corner shapes -->
+        <div class="corner-shape top-left"></div>
+        <div class="corner-shape top-right"></div>
+        <div class="corner-shape bottom-left"></div>
+        <div class="corner-shape bottom-right"></div>
+        
+        <div class="header">
+            <div class="subtitle">We are getting married</div>
+            <h1>Wedding</h1>
+        </div>
+        
+        <div class="separator">
+            <div class="line"></div>
+            <div class="diamond-shape"></div>
+            <div class="line"></div>
+        </div>
+        
+        <div class="names">
+            Emily<br>
+            <div class="and">&</div>
+            James
+        </div>
+        
+        <div class="separator">
+            <div class="line"></div>
+            <div class="diamond-shape"></div>
+            <div class="line"></div>
+        </div>
+        
+        <div class="details">
+            <div class="date">Saturday, June 15th, 2024</div>
+            <div class="venue">The Rose Garden, 123 Park Avenue</div>
+            <div>Ceremony at 4:00 PM | Reception to follow</div>
+        </div>
+        
+        <div class="rsvp">
+            Kindly reply by May 1st<br>
+            emilyandjames@example.com
+        </div>
+    </div>
+</body>
+</html>
