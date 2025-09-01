@@ -35,7 +35,6 @@ export default function Navbar() {
             <li><a href="#home">Home</a></li>
             <li><a href="#time">Date</a></li>
             <li><a href="#photos">Photos</a></li>
-            <li><a href="#comments">Comments</a></li>
           </ul>
         </div>
       </nav>
