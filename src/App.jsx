@@ -1,19 +1,29 @@
-import React from 'react';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import DateSection from './components/DateSection';
 import PhotoSlider from './components/PhotoSlider';
-import BackgroundMusic from './components/BackgroundMusic';
-import './App.css';
+import MusicPrompt from './components/MusicPrompt';
+import IntroOverlay from "./components/IntroOverlay";
+import React, { useState } from "react";
 
 function App() {
+  const [started, setStarted] = useState(false);
+
   return (
     <>
+      {!started && <IntroOverlay onStart={() => setStarted(true)} />}
+      
+      <MusicPrompt play={started} />
+
+      {started && (
+    <>
       <Navbar/>
-      <BackgroundMusic />
+      <MusicPrompt />
       <HeroSection/>
       <DateSection/>
       <PhotoSlider/>
+    </>
+ )}
     </>
   );
 }

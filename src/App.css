@@ -586,48 +586,41 @@
   }
 }
 
-
-.music-toggle {
+.intro-overlay {
   position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #fff;
-  color: #333;
-  padding: 10px 20px;
-  border-radius: 30px;
-  font-size: 1rem;
-  font-family: "Josefin Sans", sans-serif;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  z-index: 999;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.music-toggle:hover {
-  transform: translateX(-50%) scale(1.05);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-}
-
-.separator {
+  inset: 0;
+  background: linear-gradient(135deg, #0a0a0a, #1a1a2e);
   display: flex;
-  align-items: center;
   justify-content: center;
-  margin: 40px 0;
-  position: relative;
-  z-index: 1;
+  align-items: center;
+  z-index: 9999;
+  cursor: pointer;
 }
 
-.separator .line {
-  height: 1px;
-  width: 100px;
-  background-color: #e8d7d0;
+.intro-image {
+  display: block;
+  max-width: 500px;
+  width: 90%;
+  height: auto;
+  object-fit: contain;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  border-radius: 12px;
+  
+  opacity: 0; 
+  transform: scale(0.95);
+  animation: fadeIn 0.8s ease-in-out forwards;
 }
 
-.separator .diamond-shape {
-  width: 10px;
-  height: 10px;
-  transform: rotate(45deg);
-  background-color: #d282a6;
-  margin: 0 20px;
+.intro-image.fade-out {
+animation: fadeOut 2s cubic-bezier(0.6, .5, 0.4, .3) forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; transform: scale(1); }
+  to   { opacity: 0; transform: scale(0.95); }
 }
