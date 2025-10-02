@@ -19,7 +19,7 @@ export default function HeroSection() {
           </div>
           <div className="date-box">
             <div>On</div>
-            <span>25 / 07 / 2025</span>
+            <span>25 / 10 / 2025</span>
             <div>at 9:00 PM</div>
           </div>
 
